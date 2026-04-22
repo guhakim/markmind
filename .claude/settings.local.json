@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Read(//private/tmp/pw-runner/**)",
+      "Bash(node setup.js)"
+    ]
+  }
+}

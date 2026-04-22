@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"defaults write com.apple.Safari AllowJavaScriptFromAppleEvents 1\\n# Safari 재시작 필요\\nosascript -e 'tell application \\\"Safari\\\" to quit'\\nsleep 2\\nopen -a Safari \\\"https://console.cloud.googl...",
+  "error": "Exit code 1\n57:87: execution error: Safari got an error: You must enable 'Allow JavaScript from Apple Events' in the Developer section of Safari Settings to use 'do JavaScript'. (8)",
+  "timestamp": "2026-04-22T00:57:41.303Z",
+  "retry_count": 3
+}
