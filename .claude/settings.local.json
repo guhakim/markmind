@@ -4,7 +4,9 @@
       "Read(//opt/homebrew/bin/**)",
       "Read(//usr/local/bin/**)",
       "Read(//private/tmp/pw-runner/**)",
-      "Bash(node setup.js)"
+      "Bash(node setup.js)",
+      "Bash(echo \"4/0Aci98E9_uzLdndU4XogcKIaVIU0_WZHm3Vejs7xeX78ly49ImR17ijyp8gf-eTl3UiHuXQ\")",
+      "Read(//private/tmp/**)"
     ]
   }
 }

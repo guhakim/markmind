@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"defaults write com.apple.Safari AllowJavaScriptFromAppleEvents 1\\n# Safari 재시작 필요\\nosascript -e 'tell application \\\"Safari\\\" to quit'\\nsleep 2\\nopen -a Safari \\\"https://console.cloud.googl...",
-  "error": "Exit code 1\n57:87: execution error: Safari got an error: You must enable 'Allow JavaScript from Apple Events' in the Developer section of Safari Settings to use 'do JavaScript'. (8)",
-  "timestamp": "2026-04-22T00:57:41.303Z",
-  "retry_count": 3
+  "tool_input_preview": "{\"command\":\"source .env.local 2>/dev/null; node -e \\\"\\nconst admin = require('./node_modules/firebase-admin');\\nconst fs = require('fs');\\n\\n// .env.local 직접 파싱\\nconst env = fs.readFileSync('.env.loca...",
+  "error": "Exit code 1\n<anonymous_script>:1\n'{  \"type\": \"service_account\",  \"project_id\": \"markmind-18437\",  \"private_key_id\": \"7294812f99b34734975e4de699a57c1ad7b0a7be\",  \"private_key\": \"-----BEGIN PRIVATE KEY-----\n^\n\nSyntaxError: Unexpected token ''', \"'{  \"type\"\"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at [eval]:20:25\n    at runScriptInThisContext (node:internal/vm:219:10)\n    at node:internal/process/execution:451:12\n    at [eval]-wrapper:6:24\n    at runScriptInContext (node:internal/p...",
+  "timestamp": "2026-04-26T09:09:31.637Z",
+  "retry_count": 1
 }

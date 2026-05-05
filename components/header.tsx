@@ -1,6 +1,6 @@
 "use client"
 
-import { Search, Bell } from "lucide-react"
+import { Search, Bell, Sparkles } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { AddBookmarkDialog } from "@/components/add-bookmark-dialog"
@@ -12,6 +12,7 @@ interface HeaderProps {
   onSearchChange: (query: string) => void
   onAddBookmark: (bookmark: Bookmark) => void
   totalNotifications: number
+  existingUrls?: string[]
 }
 
 export function Header({
@@ -19,18 +20,17 @@ export function Header({
   onSearchChange,
   onAddBookmark,
   totalNotifications,
+  existingUrls = [],
 }: HeaderProps) {
   return (
     <header className="h-14 md:h-16 border-b border-border bg-card px-3 md:px-6 flex items-center justify-between gap-3 shrink-0">
-      {/* 로고 — 모바일 전용 */}
-      <div className="flex md:hidden items-center gap-2 shrink-0">
+      {/* 로고 — 사이드바 없는 작은 화면 전용 */}
+      <a href="/" className="flex sm:hidden items-center gap-2 shrink-0">
         <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center">
-          <svg className="w-4 h-4 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 3l14 9-14 9V3z" />
-          </svg>
+          <Sparkles className="w-4 h-4 text-primary-foreground" />
         </div>
         <span className="font-bold text-base text-foreground">MarkMind</span>
-      </div>
+      </a>
 
       {/* 검색바 */}
       <div className="flex-1 max-w-xs md:max-w-md">
@@ -57,7 +57,7 @@ export function Header({
         </Button>
 
         <div className="hidden sm:block">
-          <AddBookmarkDialog onAdd={onAddBookmark} />
+          <AddBookmarkDialog onAdd={onAddBookmark} existingUrls={existingUrls} />
         </div>
         <UserMenu />
       </div>

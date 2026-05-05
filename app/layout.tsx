@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { AuthSessionProvider } from '@/components/session-provider'
+import { FirebaseAuthProvider } from '@/components/firebase-auth-provider'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const viewport = {
   width: "device-width",
@@ -17,23 +19,19 @@ export const viewport = {
 export const metadata: Metadata = {
   title: 'MarkMind - AI 북마크 정리',
   description: 'AI가 자동으로 북마크를 분석하고 정리해주는 스마트 북마크 관리 서비스',
-  generator: 'v0.app',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'MarkMind',
+  },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    apple: '/apple-icon.png',
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
 }
 
@@ -43,11 +41,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko" className={`${geist.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
-        <AuthSessionProvider>
-          {children}
-        </AuthSessionProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+          <FirebaseAuthProvider>
+            {children}
+          </FirebaseAuthProvider>
+          <Toaster richColors position="bottom-center" />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
