@@ -15,6 +15,7 @@ node_modules
 .next/
 .DS_Store
 .vercel
+package-lock.json
 
 # Local Netlify folder
 .netlify
